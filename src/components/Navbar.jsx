@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {FaBars, FaTimes, FaGithub, FaLinkedin} from 'react-icons/fa'
 import {HiOutlineMail} from 'react-icons/hi'
-import {BsFillPersonLinesFill, BSFillPersonLinesFill} from 'react-icons/bs'
 import Logo from '../assets/name.png';
 import {Link} from 'react-scroll'
 
@@ -12,7 +11,7 @@ function Navbar() {
   return (
     <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-[#89d35e]'> 
         <div>
-            <img src={Logo} alt="Logo Image" style={{width: '50px'}} />
+            <img src={Logo} alt="Logo" style={{width: '50px'}} />
         </div>
 
         {/* Dekstop Menu */}

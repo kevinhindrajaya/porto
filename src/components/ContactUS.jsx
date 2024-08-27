@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
-const Contact = () => {
+export const ContactUS = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("portofolio_service", "template_portofolio", form.current, {
+        publicKey: "Gg88TgYMcy4EVEwSm",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
+
   return (
     <div
       name="contact"
       className="w-full h-screen bg-[#0a192f] flex justify-center items-center p-4">
       <form
-        method="POST"
-        action="https://getform.io/f/482b0b30-d4c4-400c-b550-431e607fad76"
+        ref={form}
+        onSubmit={sendEmail}
         className="flex flex-col max-w-[600px] w-full">
         <div className="pb-8">
           <p className="text-4xl font-bold inline border-b-4 border-yellow-600 text-[#89d35e]">
@@ -22,13 +42,13 @@ const Contact = () => {
           className="bg-[#ccd6f6] p-2"
           type="text"
           placeholder="Name"
-          name="name"
+          name="from_user"
         />
         <input
           className="my-4 p-2 bg-[#ccd6f6]"
           type="email"
           placeholder="Email"
-          name="email"
+          name="user_email"
         />
         <textarea
           className="bg-[#ccd6f6] p-2"
@@ -43,4 +63,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUS;
